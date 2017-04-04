@@ -1,0 +1,620 @@
+<div class="apidocDiv">
+<style>
+/*csslint
+*/
+.apidocDiv {
+    background: #fff;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.apidocDiv a[href] {
+    color: #33f;
+    font-weight: bold;
+    text-decoration: none;
+}
+.apidocDiv a[href]:hover {
+    text-decoration: underline;
+}
+.apidocCodeCommentSpan {
+    background: #bbf;
+    color: #000;
+    display: block;
+}
+.apidocCodeKeywordSpan {
+    color: #d00;
+    font-weight: bold;
+}
+.apidocCodePre {
+    background: #eef;
+    border: 1px solid;
+    color: #777;
+    padding: 5px;
+    white-space: pre-wrap;
+}
+.apidocFooterDiv {
+    margin-top: 20px;
+    text-align: center;
+}
+.apidocModuleLi {
+    margin-top: 10px;
+}
+.apidocSectionDiv {
+    border-top: 1px solid;
+    margin-top: 20px;
+}
+.apidocSignatureSpan {
+    color: #777;
+    font-weight: bold;
+}
+</style>
+<h1>api documentation for
+    <a
+
+        href="https://github.com/dbashford/textract"
+
+    >textract (v2.1.2)</a>
+</h1>
+<h4>Extracting text from files of various type including html, pdf, doc, docx, xls, xlsx, csv, pptx, png, jpg, gif, rtf, text/*, and various open office.</h4>
+<div class="apidocSectionDiv"><a
+    href="#apidoc.tableOfContents"
+    id="apidoc.tableOfContents"
+><h1>table of contents</h1></a><ol>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.textract">module textract</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.textract.fromBufferWithMime">
+            function <span class="apidocSignatureSpan">textract.</span>fromBufferWithMime
+            <span class="apidocSignatureSpan">( type, bufferContent, options, cb, withPath )</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.textract.fromBufferWithName">
+            function <span class="apidocSignatureSpan">textract.</span>fromBufferWithName
+            <span class="apidocSignatureSpan">( filePath, bufferContent, options, cb )</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.textract.fromFileWithMimeAndPath">
+            function <span class="apidocSignatureSpan">textract.</span>fromFileWithMimeAndPath
+            <span class="apidocSignatureSpan">( type, filePath, options, cb )</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.textract.fromFileWithPath">
+            function <span class="apidocSignatureSpan">textract.</span>fromFileWithPath
+            <span class="apidocSignatureSpan">( filePath, options, cb )</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.textract.fromUrl">
+            function <span class="apidocSignatureSpan">textract.</span>fromUrl
+            <span class="apidocSignatureSpan">( url, options, cb )</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">textract.</span>util</span>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.textract.util">module textract.util</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.textract.util.createExecOptions">
+            function <span class="apidocSignatureSpan">textract.util.</span>createExecOptions
+            <span class="apidocSignatureSpan">( type, options )</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.textract.util.getTextFromZipFile">
+            function <span class="apidocSignatureSpan">textract.util.</span>getTextFromZipFile
+            <span class="apidocSignatureSpan">( zipfile, entry, cb )</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.textract.util.replaceBadCharacters">
+            function <span class="apidocSignatureSpan">textract.util.</span>replaceBadCharacters
+            <span class="apidocSignatureSpan">( text )</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.textract.util.runExecIntoFile">
+            function <span class="apidocSignatureSpan">textract.util.</span>runExecIntoFile
+            <span class="apidocSignatureSpan">( label, filePath, options, execOptions, genCommand, cb )</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.textract.util.unzipCheck">
+            function <span class="apidocSignatureSpan">textract.util.</span>unzipCheck
+            <span class="apidocSignatureSpan">( type, cb )</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.textract.util.yauzlError">
+            function <span class="apidocSignatureSpan">textract.util.</span>yauzlError
+            <span class="apidocSignatureSpan">( err, cb )</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+</ol></div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.textract" id="apidoc.module.textract">module textract</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.textract.fromBufferWithMime" id="apidoc.element.textract.fromBufferWithMime">
+        function <span class="apidocSignatureSpan">textract.</span>fromBufferWithMime
+        <span class="apidocSignatureSpan">( type, bufferContent, options, cb, withPath )</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function fromBufferWithMime( type, bufferContent, options, cb, withPath ) {
+  if ( typeof type === &#x27;string&#x27; &#x26;&#x26;
+       bufferContent &#x26;&#x26;
+       bufferContent instanceof Buffer &#x26;&#x26;
+       ( typeof options === &#x27;function&#x27; || typeof cb === &#x27;function&#x27; ) ) {
+    _writeBufferToDisk( bufferContent, function( newPath ) {
+      fromFileWithMimeAndPath( type, newPath, options, cb );
+    });
+  } else {
+    _returnArgsError( arguments );
+  }
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+```javascript
+textract.fromFileWithMimeAndPath(type, filePath, config, function( error, text ) {})
+```
+
+##### Buffer + mime type
+
+```javascript
+textract.<span class="apidocCodeKeywordSpan">fromBufferWithMime</span>(type, buffer, function( error, text ) {})
+```
+
+```javascript
+textract.fromBufferWithMime(type, buffer, config, function( error, text ) {})
+```
+
+##### Buffer + file name/path
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.textract.fromBufferWithName" id="apidoc.element.textract.fromBufferWithName">
+        function <span class="apidocSignatureSpan">textract.</span>fromBufferWithName
+        <span class="apidocSignatureSpan">( filePath, bufferContent, options, cb )</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function fromBufferWithName( filePath, bufferContent, options, cb ) {
+  var type;
+  if ( typeof filePath === &#x27;string&#x27; ) {
+    type = mime.lookup( filePath );
+    fromBufferWithMime( type, bufferContent, options, cb, true );
+  } else {
+    _returnArgsError( arguments );
+  }
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+```javascript
+textract.fromBufferWithMime(type, buffer, config, function( error, text ) {})
+```
+
+##### Buffer + file name/path
+
+```javascript
+textract.<span class="apidocCodeKeywordSpan">fromBufferWithName</span>(name, buffer, function( error, text ) {})
+```
+
+```javascript
+textract.fromBufferWithName(name, buffer, config, function( error, text ) {})
+```
+
+##### URL
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.textract.fromFileWithMimeAndPath" id="apidoc.element.textract.fromFileWithMimeAndPath">
+        function <span class="apidocSignatureSpan">textract.</span>fromFileWithMimeAndPath
+        <span class="apidocSignatureSpan">( type, filePath, options, cb )</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function fromFileWithMimeAndPath( type, filePath, options, cb ) {
+  var called = false;
+
+  if ( typeof type === &#x27;string&#x27; &#x26;&#x26; typeof filePath === &#x27;string&#x27; ) {
+    if ( typeof cb === &#x27;function&#x27; &#x26;&#x26; typeof options === &#x27;object&#x27; ) {
+      // (mimeType, filePath, options, callback)
+      _extractWithType( type, filePath, options, cb );
+      called = true;
+    } else if ( typeof options === &#x27;function&#x27; &#x26;&#x26; cb === undefined ) {
+      // (mimeType, filePath, callback)
+      _extractWithType( type, filePath, {}, options );
+      called = true;
+    }
+  }
+
+  if ( !called ) {
+    _returnArgsError( arguments );
+  }
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+
+```javascript
+textract.fromFileWithPath(filePath, config, function( error, text ) {})
+```
+##### File + mime type
+
+```javascript
+textract.<span class="apidocCodeKeywordSpan">fromFileWithMimeAndPath</span>(type, filePath, function( error, text ) {})
+```
+
+```javascript
+textract.fromFileWithMimeAndPath(type, filePath, config, function( error, text ) {})
+```
+
+##### Buffer + mime type
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.textract.fromFileWithPath" id="apidoc.element.textract.fromFileWithPath">
+        function <span class="apidocSignatureSpan">textract.</span>fromFileWithPath
+        <span class="apidocSignatureSpan">( filePath, options, cb )</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function fromFileWithPath( filePath, options, cb ) {
+  var type;
+  if ( typeof filePath === &#x27;string&#x27; &#x26;&#x26;
+       ( typeof options === &#x27;function&#x27; || typeof cb === &#x27;function&#x27; ) ) {
+    type = ( options &#x26;&#x26; options.typeOverride ) || mime.lookup( filePath );
+    fromFileWithMimeAndPath( type, filePath, options, cb );
+  } else {
+    _returnArgsError( arguments );
+  }
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+There are several ways to extract text.  For all methods, the extracted text and an error object are passed to a callback.
+
+`error` will contain informative text about why the extraction failed. If textract does not currently extract files of the type
+provided, a `typeNotFound` flag will be tossed on the error object.
+
+##### File
+
+```javascript
+textract.<span class="apidocCodeKeywordSpan">fromFileWithPath</span>(filePath, function( error, text ) {})
+```
+
+```javascript
+textract.fromFileWithPath(filePath, config, function( error, text ) {})
+```
+##### File + mime type
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.textract.fromUrl" id="apidoc.element.textract.fromUrl">
+        function <span class="apidocSignatureSpan">textract.</span>fromUrl
+        <span class="apidocSignatureSpan">( url, options, cb )</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function fromUrl( url, options, cb ) {
+  var urlNoQueryParams, extname, filePath, fullFilePath, file, href, callbackCalled;
+
+  // allow url to be either a string or to be a
+  // Node URL Object: https://nodejs.org/api/url.html
+  href = ( typeof url === &#x27;string&#x27; ) ? url : url.href;
+
+  if ( href ) {
+    options = options || {};
+    urlNoQueryParams = href.split( &#x27;?&#x27; )[0];
+    extname = path.extname( urlNoQueryParams );
+    filePath = _genRandom() + extname;
+    fullFilePath = path.join( tmpDir, filePath );
+    file = fs.createWriteStream( fullFilePath );
+    file.on( &#x27;finish&#x27;, function() {
+      if ( !callbackCalled ) {
+        fromFileWithPath( fullFilePath, options, cb );
+      }
+    });
+
+    got.stream( url )
+      .on( &#x27;response&#x27;, function( response ) {
+        // allows for overriding by the developer or automatically
+        // populating based on server response.
+        if ( !options.typeOverride ) {
+          options.typeOverride = response.headers[&#x27;content-type&#x27;].split( /;/ )[0];
+        }
+      })
+      .on( &#x27;error&#x27;, function( error ) {
+        var _cb = ( typeof options === &#x27;function&#x27; ) ? options : cb;
+        callbackCalled = true;
+        _cb( error );
+      })
+      .pipe( file );
+  } else {
+    _returnArgsError( arguments );
+  }
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+```
+
+##### URL
+
+When passing a URL, the URL can either be a string, or a [node.js URL object](https://nodejs.org/api/url.html). Using the URL object
+ allows fine grained control over the URL being used.
+
+```javascript
+textract.<span class="apidocCodeKeywordSpan">fromUrl</span>(url, function( error, text ) {})
+```
+
+```javascript
+textract.fromUrl(url, config, function( error, text ) {})
+```
+
+## Testing Notes
+...</pre></li>
+    </ul>
+
+
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.textract.util" id="apidoc.module.textract.util">module textract.util</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.textract.util.createExecOptions" id="apidoc.element.textract.util.createExecOptions">
+        function <span class="apidocSignatureSpan">textract.util.</span>createExecOptions
+        <span class="apidocSignatureSpan">( type, options )</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function createExecOptions( type, options ) {
+  var execOptions = {};
+  if ( options[type] &#x26;&#x26; options[type].exec ) {
+    execOptions = options[type].exec;
+  } else {
+    if ( options.exec ) {
+      execOptions = options.exec;
+    }
+  }
+  return execOptions;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.textract.util.getTextFromZipFile" id="apidoc.element.textract.util.getTextFromZipFile">
+        function <span class="apidocSignatureSpan">textract.util.</span>getTextFromZipFile
+        <span class="apidocSignatureSpan">( zipfile, entry, cb )</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function getTextFromZipFile( zipfile, entry, cb ) {
+  zipfile.openReadStream( entry, function( err, readStream ) {
+    var text = &#x27;&#x27;
+      , error = &#x27;&#x27;
+      ;
+
+    if ( err ) {
+      cb( err, null );
+      return;
+    }
+
+    readStream.on( &#x27;data&#x27;, function( chunk ) {
+      text += chunk;
+    });
+    readStream.on( &#x27;end&#x27;, function() {
+      if ( error.length &#x3e; 0 ) {
+        cb( error, null );
+      } else {
+        cb( null, text );
+      }
+    });
+    readStream.on( &#x27;error&#x27;, function( _err ) {
+      error += _err;
+    });
+  });
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.textract.util.replaceBadCharacters" id="apidoc.element.textract.util.replaceBadCharacters">
+        function <span class="apidocSignatureSpan">textract.util.</span>replaceBadCharacters
+        <span class="apidocSignatureSpan">( text )</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function replaceBadCharacters( text ) {
+  var i, repl;
+  for ( i = 0; i &#x3c; rLen; i++ ) {
+    repl = replacements[i];
+    text = text.replace( repl[0], repl[1] );
+  }
+  return text;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+}
+
+// global, all file type, content cleansing
+function cleanseText( options, cb ) {
+  return function( error, text ) {
+    if ( !error ) {
+// clean up text
+text = util.<span class="apidocCodeKeywordSpan">replaceBadCharacters</span>( text );
+
+if ( options.preserveLineBreaks ) {
+  text = text.replace( WHITELIST_PRESERVE_LINEBREAKS, &#x27; &#x27; );
+} else {
+  text = text.replace( WHITELIST_STRIP_LINEBREAKS, &#x27; &#x27; );
+}
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.textract.util.runExecIntoFile" id="apidoc.element.textract.util.runExecIntoFile">
+        function <span class="apidocSignatureSpan">textract.util.</span>runExecIntoFile
+        <span class="apidocSignatureSpan">( label, filePath, options, execOptions, genCommand, cb )</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function runExecIntoFile( label, filePath, options, execOptions, genCommand, cb ) {
+  // escape the file paths
+  var fileTempOutPath = path.join( outDir, path.basename( filePath, path.extname( filePath ) ) )
+    , escapedFilePath = filePath.replace( /\s/g, &#x27;\\ &#x27; )
+    , escapedFileTempOutPath = fileTempOutPath.replace( /\s/g, &#x27;\\ &#x27; )
+    , cmd = genCommand( options, escapedFilePath, escapedFileTempOutPath )
+    ;
+
+  exec( cmd, execOptions,
+    function( error /* , stdout, stderr */ ) {
+      if ( error !== null ) {
+        error = new Error( &#x27;Error extracting [[ &#x27; +
+          path.basename( filePath ) + &#x27; ]], exec error: &#x27; + error.message );
+        cb( error, null );
+        return;
+      }
+
+      fs.exists( fileTempOutPath + &#x27;.txt&#x27;, function( exists ) {
+        if ( exists ) {
+          fs.readFile( fileTempOutPath + &#x27;.txt&#x27;, &#x27;utf8&#x27;, function( error2, text ) {
+            if ( error2 ) {
+              error2 = new Error( &#x27;Error reading&#x27; + label +
+                &#x27; output at [[ &#x27; + fileTempOutPath + &#x27; ]], error: &#x27; + error.message );
+              cb( error2, null );
+            } else {
+              fs.unlink( fileTempOutPath + &#x27;.txt&#x27;, function( error3 ) {
+                if ( error3 ) {
+                  error3 = new Error( &#x27;Error, &#x27; + label +
+                    &#x27; , cleaning up temp file [[ &#x27; + fileTempOutPath +
+                    &#x27; ]], error: &#x27; + error.message );
+                  cb( error3, null );
+                } else {
+                  cb( null, text.toString() );
+                }
+              });
+            }
+          });
+        } else {
+          error = new Error( &#x27;Error reading &#x27; + label +
+            &#x27; output at [[ &#x27; + fileTempOutPath + &#x27; ]], file does not exist&#x27; );
+          cb( error, null );
+        }
+      });
+    }
+  );
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.textract.util.unzipCheck" id="apidoc.element.textract.util.unzipCheck">
+        function <span class="apidocSignatureSpan">textract.util.</span>unzipCheck
+        <span class="apidocSignatureSpan">( type, cb )</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function unzipCheck( type, cb ) {
+  exec( &#x27;unzip&#x27;,
+    function( error /* , stdout, stderr */ ) {
+      if ( error ) {
+        // eslint-disable-next-line no-console
+        console.error( &#x27;textract: \&#x27;unzip\&#x27; does not appear to be installed, &#x27; +
+          &#x27;so textract will be unable to extract &#x27; + type + &#x27;.&#x27; );
+      }
+      cb( error === null );
+    }
+  );
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.textract.util.yauzlError" id="apidoc.element.textract.util.yauzlError">
+        function <span class="apidocSignatureSpan">textract.util.</span>yauzlError
+        <span class="apidocSignatureSpan">( err, cb )</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function yauzlError( err, cb ) {
+  var msg = err.message;
+  if ( msg === &#x27;end of central directory record signature not found&#x27; ) {
+    msg = &#x27;File not correctly recognized as zip file, &#x27; + msg;
+  }
+  cb( new Error( msg ), null );
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocFooterDiv">
+    [ this document was created with
+    <a href="https://github.com/kaizhu256/node-utility2" target="_blank">utility2</a>
+    ]
+</div>
+</div>
