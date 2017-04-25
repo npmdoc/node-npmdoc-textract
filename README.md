@@ -1,6 +1,6 @@
 # npmdoc-textract
 
-#### api documentation for  [textract (v2.1.2)](https://github.com/dbashford/textract)  [![npm package](https://img.shields.io/npm/v/npmdoc-textract.svg?style=flat-square)](https://www.npmjs.org/package/npmdoc-textract) [![travis-ci.org build-status](https://api.travis-ci.org/npmdoc/node-npmdoc-textract.svg)](https://travis-ci.org/npmdoc/node-npmdoc-textract)
+#### basic api documentation for  [textract (v2.1.2)](https://github.com/dbashford/textract)  [![npm package](https://img.shields.io/npm/v/npmdoc-textract.svg?style=flat-square)](https://www.npmjs.org/package/npmdoc-textract) [![travis-ci.org build-status](https://api.travis-ci.org/npmdoc/node-npmdoc-textract.svg)](https://travis-ci.org/npmdoc/node-npmdoc-textract)
 
 #### Extracting text from files of various type including html, pdf, doc, docx, xls, xlsx, csv, pptx, png, jpg, gif, rtf, text/*, and various open office.
 
