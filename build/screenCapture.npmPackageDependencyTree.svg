@@ -93,7 +93,7 @@
 <tspan x="10" y="1450">  │ │ └── signal-exit@3.0.2 </tspan>
 <tspan x="10" y="1466">  │ ├── map-obj@1.0.1 </tspan>
 <tspan x="10" y="1482">  │ ├── minimist@1.2.0 </tspan>
-<tspan x="10" y="1498">  │ ├─┬ normalize-package-data@2.3.6 </tspan>
+<tspan x="10" y="1498">  │ ├─┬ normalize-package-data@2.3.8 </tspan>
 <tspan x="10" y="1514">  │ │ ├── hosted-git-info@2.4.2 </tspan>
 <tspan x="10" y="1530">  │ │ ├─┬ is-builtin-module@1.0.0 </tspan>
 <tspan x="10" y="1546">  │ │ │ └── builtin-modules@1.1.1 </tspan>
